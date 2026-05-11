@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Зеленоградск 2026 — Город кошек</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- Art Nouveau SVG ornaments -->
+<svg style="display:none">
+  <defs>
+    <!-- Floral divider motif -->
+    <symbol id="ornament-flower" viewBox="0 0 60 30">
+      <g fill="none" stroke="currentColor" stroke-width="1.2">
+        <circle cx="30" cy="15" r="5"/>
+        <ellipse cx="30" cy="6" rx="3" ry="5"/>
+        <ellipse cx="30" cy="24" rx="3" ry="5"/>
+        <ellipse cx="21" cy="10" rx="5" ry="3" transform="rotate(-30 21 10)"/>
+        <ellipse cx="39" cy="20" rx="5" ry="3" transform="rotate(-30 39 20)"/>
+        <ellipse cx="21" cy="20" rx="5" ry="3" transform="rotate(30 21 20)"/>
+        <ellipse cx="39" cy="10" rx="5" ry="3" transform="rotate(30 39 10)"/>
+        <circle cx="30" cy="15" r="2.5" fill="currentColor" opacity="0.3"/>
+      </g>
+    </symbol>
+
+    <!-- Leaf branch -->
+    <symbol id="ornament-branch" viewBox="0 0 120 20">
+      <g fill="none" stroke="currentColor" stroke-width="1">
+        <path d="M0,10 Q30,10 60,10 Q90,10 120,10"/>
+        <path d="M20,10 Q22,4 28,6 Q26,10 20,10"/>
+        <path d="M35,10 Q37,3 44,5 Q41,10 35,10"/>
+        <path d="M50,10 Q52,4 58,6 Q56,10 50,10"/>
+        <path d="M70,10 Q72,16 78,14 Q76,10 70,10"/>
+        <path d="M85,10 Q87,17 94,15 Q91,10 85,10"/>
+        <path d="M100,10 Q102,16 108,14 Q106,10 100,10"/>
+      </g>
+    </symbol>
+
+    <!-- Corner ornament -->
+    <symbol id="ornament-corner" viewBox="0 0 40 40">
+      <g fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M0,40 Q0,0 40,0"/>
+        <path d="M0,40 Q5,20 20,20 Q20,5 40,0"/>
+        <circle cx="20" cy="20" r="3"/>
+        <path d="M8,32 Q8,22 18,22"/>
+        <path d="M22,8 Q22,18 32,18"/>
+        <circle cx="8" cy="32" r="1.5" fill="currentColor"/>
+        <circle cx="32" cy="8" r="1.5" fill="currentColor"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<style>
+  :root {
+    --cream: #FFF8F0;
+    --terra: #C4673A;
+    --teal: #2D6E6E;
+    --amber: #E8A04A;
+    --dark: #2C1810;
+    --light-terra: #F5DDD0;
+    --light-teal: #D4EAEA;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Nunito', sans-serif;
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--teal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url('Cranz.png') center center / cover no-repeat;
+    filter: sepia(30%) contrast(1.05) brightness(0.7);
+    z-index: 0;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(18, 38, 38, 0.55);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-title-box {
+    background: rgba(18, 38, 38, 0.65);
+    border: 1px solid rgba(232, 160, 74, 0.4);
+    backdrop-filter: blur(4px);
+    padding: 24px 48px 20px;
+    margin-bottom: 0;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 80px;
+    background: var(--cream);
+    clip-path: ellipse(55% 100% at 50% 100%);
+    z-index: 3;
+  }
+
+  .hero-cats {
+    font-size: 48px;
+    letter-spacing: 12px;
+    margin-bottom: 24px;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .hero-label {
+    font-family: 'Nunito', sans-serif;
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 10vw, 96px);
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .hero-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(18px, 3vw, 24px);
+    color: var(--amber);
+    margin-bottom: 40px;
+  }
+
+  .travelers {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .traveler {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 50px;
+    padding: 10px 24px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* SECTION */
+  .section {
+    padding: 80px 20px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--terra);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 48px);
+    color: var(--dark);
+    margin-bottom: 32px;
+    line-height: 1.2;
+  }
+
+  .dotted-divider {
+    border: none;
+    border-top: 2px dashed var(--light-terra);
+    margin: 48px 0;
+  }
+
+  /* ART NOUVEAU ORNAMENTS */
+  .art-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 48px auto;
+    max-width: 960px;
+    padding: 0 20px;
+    color: var(--terra);
+    opacity: 0.6;
+  }
+
+  .art-divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--terra), transparent);
+  }
+
+  .art-divider svg {
+    width: 60px;
+    height: 30px;
+    flex-shrink: 0;
+  }
+
+  .art-divider-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--amber);
+    flex-shrink: 0;
+  }
+
+  /* Corner ornaments on section titles */
+  .section-title-ornament {
+    position: relative;
+    display: inline-block;
+  }
+
+  .section-title-ornament::before,
+  .section-title-ornament::after {
+    content: '❧';
+    color: var(--terra);
+    opacity: 0.4;
+    font-size: 20px;
+    margin: 0 10px;
+    vertical-align: middle;
+  }
+
+  /* Art Nouveau card corners */
+  .day-card {
+    position: relative;
+  }
+
+  .day-card::after {
+    content: '';
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 40 40' fill='none' stroke='%23C4673A' stroke-width='1.2' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,40 Q0,0 40,0'/%3E%3Cpath d='M0,40 Q5,20 20,20 Q20,5 40,0'/%3E%3Ccircle cx='20' cy='20' r='3'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+  }
+
+  /* Hero background pattern */
+  .hero-pattern {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='white' stroke-width='0.8'%3E%3Ccircle cx='30' cy='30' r='8'/%3E%3Cellipse cx='30' cy='16' rx='4' ry='7'/%3E%3Cellipse cx='30' cy='44' rx='4' ry='7'/%3E%3Cellipse cx='16' cy='24' rx='7' ry='4' transform='rotate(-30 16 24)'/%3E%3Cellipse cx='44' cy='36' rx='7' ry='4' transform='rotate(-30 44 36)'/%3E%3Cellipse cx='16' cy='36' rx='7' ry='4' transform='rotate(30 16 36)'/%3E%3Cellipse cx='44' cy='24' rx='7' ry='4' transform='rotate(30 44 24)'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  /* Section label with art nouveau touch */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-label::before,
+  .section-label::after {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 1px;
+    background: var(--terra);
+    opacity: 0.5;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .about-text p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #5a3d30;
+    margin-bottom: 16px;
+  }
+
+  .fact-box {
+    background: var(--light-teal);
+    border-left: 4px solid var(--teal);
+    padding: 20px 24px;
+    border-radius: 0 12px 12px 0;
+    margin-top: 24px;
+  }
+
+  .fact-box p {
+    font-size: 15px;
+    color: var(--teal);
+    font-weight: 600;
+    margin: 0 !important;
+  }
+
+  .villa-illustration {
+    background: var(--light-terra);
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .villa-svg {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  /* DAYS */
+  .days-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .day-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px;
+    border: 1px solid var(--light-terra);
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 24px;
+    align-items: start;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .day-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--terra);
+  }
+
+  .day-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .day-date {
+    text-align: center;
+  }
+
+  .day-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--terra);
+    line-height: 1;
+  }
+
+  .day-month {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--amber);
+    font-weight: 700;
+  }
+
+  .day-emoji {
+    font-size: 28px;
+    margin-top: 8px;
+  }
+
+  .day-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--dark);
+    margin-bottom: 12px;
+  }
+
+  .day-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .day-items li {
+    font-size: 15px;
+    color: #5a3d30;
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .day-items li::before {
+    content: '🐾';
+    position: absolute;
+    left: 0;
+    font-size: 11px;
+    top: 3px;
+  }
+
+  .day-items li.highlight {
+    background: var(--light-terra);
+    padding: 10px 10px 10px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    color: var(--terra);
+  }
+
+  .day-items li.highlight::before {
+    top: 12px;
+  }
+
+  /* CAFES */
+  .cafes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .cafe-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px;
+    border: 1px solid var(--light-terra);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+  }
+
+  .cafe-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .cafe-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(196, 103, 58, 0.12);
+  }
+
+  .cafe-emoji {
+    font-size: 36px;
+    margin-bottom: 12px;
+  }
+
+  .cafe-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+
+  .cafe-tag {
+    display: inline-block;
+    background: var(--light-teal);
+    color: var(--teal);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 50px;
+    margin-bottom: 12px;
+  }
+
+  .cafe-desc {
+    font-size: 14px;
+    color: #7a5a4a;
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--teal);
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .footer-cats {
+    font-size: 40px;
+    letter-spacing: 16px;
+    margin-bottom: 24px;
+    display: block;
+    animation: walk 8s linear infinite;
+  }
+
+  @keyframes walk {
+    0% { transform: translateX(-20px); }
+    50% { transform: translateX(20px); }
+    100% { transform: translateX(-20px); }
+  }
+
+  .footer h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 48px);
+    color: #fff;
+    margin-bottom: 16px;
+  }
+
+  .footer p {
+    color: var(--amber);
+    font-size: 16px;
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* SCROLL CAT */
+  .scroll-cat {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    font-size: 32px;
+    cursor: pointer;
+    animation: bounce 2s ease-in-out infinite;
+    z-index: 100;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .day-card { grid-template-columns: 1fr; }
+    .day-date { display: flex; align-items: center; gap: 12px; }
+    .day-number { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-cats">🐱 🐈 🐱</div>
+    <div class="hero-title-box">
+      <div class="hero-label">Семейное путешествие • Калининградская область</div>
+      <h1>Зеленоградск</h1>
+      <div class="hero-subtitle">Город кошек • 17–23 мая 2026</div>
+    </div>
+    <div class="travelers" style="margin-top:32px;">
+      <div class="traveler">🧔 Дмитрий</div>
+      <div class="traveler">👩 Анна</div>
+      <div class="traveler">👧 Маша</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="section">
+  <div class="section-label">О городе</div>
+  <h2 class="section-title">Бывший Кранц,<br>нынешний город котов</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>Зеленоградск — маленький курортный город на берегу Балтийского моря. До 1946 года назывался Кранц — старинный немецкий курорт с историческими виллами и кургаузами.</p>
+      <p>Сегодня это официальная столица котов Калининградской области. Здесь живут городские коты с официальными паспортами — и встретить их можно буквально за каждым углом.</p>
+      <div class="fact-box">
+        <p>🐾 В Зеленоградске официально зарегистрированы городские коты. У каждого есть имя, паспорт и своя территория.</p>
+      </div>
+    </div>
+    <div class="about-text">
+      <div class="fact-box" style="background: var(--light-terra); border-left-color: var(--terra); margin-bottom: 16px;">
+        <p style="color: var(--terra);">🏛 Наш дом — вилла «Густав-Адольф», 1891 года постройки.<br>Улица Осипенко, 2 — самый центр города.</p>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:8px;">
+        <div style="background:#f5f0ea; border-radius:12px; padding:16px; text-align:center;">
+          <div style="font-size:28px;">🕯</div>
+          <div style="font-size:13px; color:#7a5a4a; margin-top:6px;">Хрустальная люстра и кружевные занавески</div>
+        </div>
+        <div style="background:#f5f0ea; border-radius:12px; padding:16px; text-align:center;">
+          <div style="font-size:28px;">🔥</div>
+          <div style="font-size:13px; color:#7a5a4a; margin-top:6px;">Историческая кафельная печь XIX века</div>
+        </div>
+        <div style="background:#f5f0ea; border-radius:12px; padding:16px; text-align:center;">
+          <div style="font-size:28px;">🌿</div>
+          <div style="font-size:13px; color:#7a5a4a; margin-top:6px;">Большие окна с видом на деревья</div>
+        </div>
+        <div style="background:#f5f0ea; border-radius:12px; padding:16px; text-align:center;">
+          <div style="font-size:28px;">📍</div>
+          <div style="font-size:13px; color:#7a5a4a; margin-top:6px;">2 мин до Мурариума и ресторана БАЛТ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VILLA PHOTOS -->
+<div class="section" style="padding-top: 0;">
+  <div class="section-label">Наше жильё</div>
+  <h2 class="section-title">Вилла «Густав-Адольф», 1891</h2>
+
+  <div style="background:#fff; border:1px solid var(--light-terra); border-radius:16px; padding:32px; margin-bottom:24px;">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:start;">
+      <div>
+        <div class="section-label" style="margin-bottom:8px;">История виллы</div>
+        <p style="font-size:16px; line-height:1.8; color:#5a3d30; margin-bottom:16px;">
+          Вилла построена в <strong>1891 году</strong> — в самый расцвет Кранца как королевского курорта Восточной Пруссии. Именно тогда после открытия железной дороги из Кёнигсберга (1885) город начал стремительно застраиваться элегантными виллами для отдыхающей публики из Берлина, Варшавы и Парижа.
+        </p>
+        <p style="font-size:16px; line-height:1.8; color:#5a3d30; margin-bottom:16px;">
+          Название «Густав-Адольф» — традиция той эпохи: виллы называли в честь владельца или строителя. Кафельная печь с чугунным литьём — подлинный артефакт XIX века, сохранившийся в оригинальном виде.
+        </p>
+        <p style="font-size:16px; line-height:1.8; color:#5a3d30;">
+          Адрес в немецкую эпоху был частью исторического центра Кранца, в нескольких шагах от главной курортной улицы — Кёнигсбергерштрассе (ныне Курортный проспект).
+        </p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div class="fact-box" style="background:var(--light-terra); border-left-color:var(--terra);">
+          <p style="color:var(--terra);">🏛 <strong>1844</strong> — Кранц получает статус королевского курорта Пруссии</p>
+        </div>
+        <div class="fact-box" style="background:var(--light-teal); border-left-color:var(--teal);">
+          <p style="color:var(--teal);">🚂 <strong>1885</strong> — Открытие железной дороги из Кёнигсберга. Начало строительного бума вилл</p>
+        </div>
+        <div class="fact-box" style="background:var(--light-terra); border-left-color:var(--terra);">
+          <p style="color:var(--terra);">🏠 <strong>1891</strong> — Построена вилла «Густав-Адольф». Кранц на пике популярности — гости из Берлина, Варшавы, Парижа</p>
+        </div>
+        <div class="fact-box" style="background:var(--light-teal); border-left-color:var(--teal);">
+          <p style="color:var(--teal);">🐾 <strong>Сегодня</strong> — Вилла сохранила историческую печь, лепнину и атмосферу немецкого курорта</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:24px;">
+    <div class="section-label" style="margin-bottom:12px;">Кранц ~1900 — эпоха постройки виллы</div>
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+      <div style="border-radius:12px; overflow:hidden;">
+        <img src="https://ostpreussen.net/wp-content/uploads/2021/03/image1616338598.jpg" style="width:100%; height:220px; object-fit:cover; display:block;" alt="Набережная Кранца около 1900">
+        <div style="background:#f5f0ea; padding:10px 14px; font-size:13px; color:#7a5a4a; font-style:italic;">Набережная Кранца, ~1900</div>
+      </div>
+      <div style="border-radius:12px; overflow:hidden;">
+        <img src="https://ostpreussen.net/wp-content/uploads/2021/03/image1616338635.jpg" style="width:100%; height:220px; object-fit:cover; display:block;" alt="Отели старого Кранца">
+        <div style="background:#f5f0ea; padding:10px 14px; font-size:13px; color:#7a5a4a; font-style:italic;">Отели и виллы Кранца, до 1914</div>
+      </div>
+      <div style="border-radius:12px; overflow:hidden;">
+        <img src="https://ostpreussen.net/wp-content/uploads/2021/03/image1616338603.jpg" style="width:100%; height:220px; object-fit:cover; display:block;" alt="Кранц до войны">
+        <div style="background:#f5f0ea; padding:10px 14px; font-size:13px; color:#7a5a4a; font-style:italic;">Прогулочная набережная, до 1939</div>
+      </div>
+      <div style="border-radius:12px; overflow:hidden;">
+        <img src="https://ostpreussen.net/wp-content/uploads/2021/03/image1616338625.jpg" style="width:100%; height:220px; object-fit:cover; display:block;" alt="Открытка Кранца">
+        <div style="background:#f5f0ea; padding:10px 14px; font-size:13px; color:#7a5a4a; font-style:italic;">Довоенная открытка «Бад Кранц»</div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:#b0a090; margin-top:8px; text-align:right;">Источник: ostpreussen.net</p>
+  </div>
+
+  <div style="background:#fff; border:1px solid var(--light-terra); border-radius:16px; padding:28px; margin-bottom:24px; display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:start;">
+    <div>
+      <div class="section-label" style="margin-bottom:8px;">Соседний дом, 1920 год</div>
+      <img src="https://pastvu.com/api2/photo.geoAll?lt=54.961&ln=20.482&rb=54.967&rn=20.492" style="display:none">
+      <div style="border-radius:12px; overflow:hidden;">
+        <img src="1379256 Cranz. Wohnhaus der Familie Seek, Augusta straЯe, 15.jpg" style="width:100%; height:260px; object-fit:cover; display:block; filter:sepia(30%) contrast(1.1);" alt="Cranz 1920">
+        <div style="background:#2c1810; padding:12px; font-size:12px; color:#9a7a5a; line-height:1.6;">
+          Жилой дом семьи Сеек — владельцев отеля и домов отдыха в Кранце. Augusta Straße, 15 — ныне <strong style="color:#c4a070;">ул. Саратовская</strong>, в одном квартале от нашей виллы. Фото предоставил правнук Фридриха Адольфа Сеека. 1920 г.
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="section-label" style="margin-bottom:8px;">Историческая версия</div>
+      <p style="font-size:15px; line-height:1.8; color:#5a3d30; margin-bottom:12px;">
+        Семья Сеек владела отелями и виллами в этом квартале Кранца. Имя <strong>«Адольф»</strong> в названии виллы и в имени владельца соседнего дома — возможно, не совпадение.
+      </p>
+      <p style="font-size:15px; line-height:1.8; color:#5a3d30;">
+        Вилла «Густав-Адольф» на ул. Осипенко, 2 (бывш. одна из улиц квартала Кранца рядом с Augusta Straße) — типичный доходный дом немецкого курортника конца XIX века, сдававшийся отдыхающим из Кёнигсберга и Берлина.
+      </p>
+      <div class="fact-box" style="margin-top:12px;">
+        <p>🔍 Источник: pastvu.com — архив исторических фотографий</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-bottom:12px;">Вилла сегодня</div>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-bottom:8px;">
+    <div style="border-radius:12px; overflow:hidden; aspect-ratio:4/5;">
+      <img src="villa 1.png" style="width:100%; height:100%; object-fit:cover; display:block;" alt="Вилла — чайный столик">
+    </div>
+    <div style="border-radius:12px; overflow:hidden; aspect-ratio:4/5;">
+      <img src="villa 2.png" style="width:100%; height:100%; object-fit:cover; display:block;" alt="Вилла — обеденный стол">
+    </div>
+    <div style="border-radius:12px; overflow:hidden; aspect-ratio:4/5;">
+      <img src="villa 3.png" style="width:100%; height:100%; object-fit:cover; display:block;" alt="Вилла — спальня">
+    </div>
+    <div style="border-radius:12px; overflow:hidden; aspect-ratio:4/5;">
+      <img src="villa 4.png" style="width:100%; height:100%; object-fit:cover; display:block;" alt="Вилла — историческая печь">
+    </div>
+  </div>
+</div>
+
+<div class="art-divider">
+  <div class="art-divider-line"></div>
+  <div class="art-divider-dot"></div>
+  <svg viewBox="0 0 60 30"><use href="#ornament-flower" color="#C4673A"/></svg>
+  <div class="art-divider-dot"></div>
+  <div class="art-divider-line"></div>
+</div>
+
+<!-- PROGRAM -->
+<div class="section">
+  <div class="section-label">Программа</div>
+  <h2 class="section-title">7 дней у Балтийского моря 🌊</h2>
+  <div class="days-grid">
+
+    <!-- Day 1 -->
+    <div class="day-card">
+      <div class="day-date">
+        <div class="day-number">17</div>
+        <div class="day-month">Мая</div>
+        <div class="day-emoji">✈️</div>
+      </div>
+      <div>
+        <div class="day-title">Приезд — первый вдох Балтики</div>
+        <ul class="day-items">
+          <li class="highlight">✈️ 10:00 — Прилёт в аэропорт Калининград (Храброво)</li>
+          <li>Трансфер на вокзал Калининград-Южный (~30 мин)</li>
+          <li class="highlight">🚂 11:12 → 11:44 — Электричка до Зеленоградска (32 мин, ~111 ₽)</li>
+          <li>Заселение в виллу, осваиваем веранду</li>
+          <li>Первая прогулка по набережной</li>
+          <li>Знакомство с местными котами</li>
+          <li class="highlight">🍽 Ужин: ресторан БАЛТ (Курортный пр., 16) — балтийская кухня, хлеб из печи, своя сыроварня. Призёр «Пальмовой ветви»</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Day 2 -->
+    <div class="day-card">
+      <div class="day-date">
+        <div class="day-number">18</div>
+        <div class="day-month">Мая</div>
+        <div class="day-emoji">🐱</div>
+      </div>
+      <div>
+        <div class="day-title">Изучаем город котов</div>
+        <ul class="day-items">
+          <li>Утро с кофе на веранде</li>
+          <li>Мурариум — музей котов Зеленоградска</li>
+          <li>Прогулка по историческому центру</li>
+          <li class="highlight">🍽 Обед: кафе «Телеграф» — в здании почтамта начала XX века, балтийская кухня, атмосфера старого Кранца</li>
+          <li>Вечерний поиск городских котов-«паспортистов»</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Day 3 -->
+    <div class="day-card">
+      <div class="day-date">
+        <div class="day-number">19</div>
+        <div class="day-month">Мая</div>
+        <div class="day-emoji">🌊</div>
+      </div>
+      <div>
+        <div class="day-title">Море и ветер</div>
+        <ul class="day-items">
+          <li>Утро на пляже Балтийского моря</li>
+          <li>Купание (если погода позволит 😄)</li>
+          <li class="highlight">🍽 Обед: кафе «Амбар» — панорамный вид на море, открытая терраса, литовская кухня: цеппелины, холодный борщ, драники</li>
+          <li>Прогулка в городском парке</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Day 4 -->
+    <div class="day-card">
+      <div class="day-date">
+        <div class="day-number">20</div>
+        <div class="day-month">Мая</div>
+        <div class="day-emoji">👧</div>
+      </div>
+      <div>
+        <div class="day-title">День Маши</div>
+        <ul class="day-items">
+          <li>Катание на велосипедах по набережной</li>
+          <li>Мороженое у моря — обязательно!</li>
+          <li class="highlight">🍽 Обед: Park House — семейное кафе на берегу озера, панорамные окна, большой выбор блюд</li>
+          <li>Вечер: настольные игры на веранде</li>
+          <li>Звёздное небо над Балтикой</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Day 5 -->
+    <div class="day-card">
+      <div class="day-date">
+        <div class="day-number">21</div>
+        <div class="day-month">Мая</div>
+        <div class="day-emoji">🌲</div>
+      </div>
+      <div>
+        <div class="day-title">Куршская коса</div>
+        <ul class="day-items">
+          <li>Поездка на Куршскую косу (45 мин)</li>
+          <li>Танцующий лес — деревья с изогнутыми стволами</li>
+          <li>Высота Эфа — дюны с видом на залив и море</li>
+          <li>Пикник среди сосен</li>
+          <li>Поиск янтаря на берегу</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Day 6 -->
+    <div class="day-card">
+      <div class="day-date">
+        <div class="day-number">22</div>
+        <div class="day-month">Мая</div>
+        <div class="day-emoji">💆‍♀️</div>
+      </div>
+      <div>
+        <div class="day-title">Анин день — отдых и вкусное</div>
+        <ul class="day-items">
+          <li>Неспешное утро, спа или массаж</li>
+          <li class="highlight">🍽 Обед: кафе «Гнездо» — гастрономический проект, два уровня, авторская кухня</li>
+          <li>Шопинг в центре — сувениры с котами</li>
+          <li>Закат с бокалом вина на веранде</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Day 7 -->
+    <div class="day-card">
+      <div class="day-date">
+        <div class="day-number">23</div>
+        <div class="day-month">Мая</div>
+        <div class="day-emoji">🧳</div>
+      </div>
+      <div>
+        <div class="day-title">Последнее утро у моря</div>
+        <ul class="day-items">
+          <li>Ранний подъём, последний кофе на веранде</li>
+          <li>Прощание с городскими котами 🐾</li>
+          <li class="highlight">🚂 07:45 → 08:17 — Электричка Зеленоградск → Калининград (~32 мин)</li>
+          <li>Трансфер из Калининграда в аэропорт Храброво (~30 мин)</li>
+          <li class="highlight">✈️ 11:15 — Вылет домой</li>
+          <li>До свидания, Зеленоградск! Мы вернёмся 🐱</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="art-divider">
+  <div class="art-divider-line"></div>
+  <div class="art-divider-dot"></div>
+  <svg viewBox="0 0 60 30"><use href="#ornament-flower" color="#C4673A"/></svg>
+  <div class="art-divider-dot"></div>
+  <div class="art-divider-line"></div>
+</div>
+
+<!-- CAFES -->
+<div class="section">
+  <div class="section-label">Гастрономия</div>
+  <h2 class="section-title">Наши кафе 🍽</h2>
+  <div class="cafes-grid">
+
+    <div class="cafe-card">
+      <div class="cafe-emoji">🏛</div>
+      <div class="cafe-name">БАЛТ</div>
+      <span class="cafe-tag">Балтийская кухня</span>
+      <p class="cafe-desc">В историческом кургаузе. Серебряный призёр «Пальмовой ветви». Хлеб из собственной пекарни, сыры из своей сыроварни. Блюда на открытом огне. Курортный пр., 16.</p>
+    </div>
+
+    <div class="cafe-card">
+      <div class="cafe-emoji">📮</div>
+      <div class="cafe-name">Телеграф</div>
+      <span class="cafe-tag">Историческое место</span>
+      <p class="cafe-desc">В здании почтамта начала XX века — памятника архитектуры. Балтийская кухня, атмосфера старого немецкого Кранца.</p>
+    </div>
+
+    <div class="cafe-card">
+      <div class="cafe-emoji">🌊</div>
+      <div class="cafe-name">Амбар</div>
+      <span class="cafe-tag">Вид на море</span>
+      <p class="cafe-desc">Панорамный вид на Балтийское море, большая открытая терраса. Литовская кухня: цеппелины, холодный борщ, картофельные драники.</p>
+    </div>
+
+    <div class="cafe-card">
+      <div class="cafe-emoji">🏡</div>
+      <div class="cafe-name">Park House</div>
+      <span class="cafe-tag">Семейное кафе</span>
+      <p class="cafe-desc">На берегу озера в живописном парке. Панорамные окна, большой зал, обширное меню. Идеально для семейного обеда с Машей.</p>
+    </div>
+
+    <div class="cafe-card">
+      <div class="cafe-emoji">🪺</div>
+      <div class="cafe-name">Гнездо</div>
+      <span class="cafe-tag">Гастрономия</span>
+      <p class="cafe-desc">Гастрономический проект на двух уровнях. Авторская кухня, уютная атмосфера, необычные сочетания вкусов.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- 1903 STORY -->
+<div style="background: var(--cream); padding: 80px 20px;">
+  <div style="max-width: 960px; margin: 0 auto;">
+    <div class="section-label" style="margin-bottom:12px;">Кранц, 1903</div>
+    <h2 style="font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,44px); color:var(--dark); margin-bottom:8px; line-height:1.2;">Семья, которая была здесь до нас</h2>
+    <p style="font-family:'Playfair Display',serif; font-style:italic; color:var(--terra); font-size:18px; margin-bottom:40px;">Мы идём по их маршруту — 123 года спустя</p>
+
+    <!-- Diary page -->
+    <div style="background:#fdf6e8; border:1px solid #e8d8b0; border-radius:4px; padding:48px; position:relative; box-shadow: 4px 4px 20px rgba(44,24,16,0.08); margin-bottom:40px;">
+      <!-- Paper texture lines -->
+      <div style="position:absolute; top:0; left:0; right:0; bottom:0; background-image: repeating-linear-gradient(transparent, transparent 31px, #e8d8b0 31px, #e8d8b0 32px); border-radius:4px; opacity:0.3; pointer-events:none;"></div>
+
+      <!-- Header -->
+      <div style="text-align:center; margin-bottom:32px; position:relative;">
+        <div style="font-family:'Playfair Display',serif; font-size:13px; letter-spacing:4px; text-transform:uppercase; color:#9a7a5a; margin-bottom:8px;">Reisetagebuch · Дневник путешествия</div>
+        <div style="font-family:'Playfair Display',serif; font-size:32px; color:var(--dark);">Кранц, июль 1903</div>
+        <div style="width:80px; height:1px; background:var(--terra); margin:12px auto; opacity:0.4;"></div>
+        <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:15px; color:#7a5a4a;">Вилла «Густав-Адольф», ул. Осипенко, 2</div>
+      </div>
+
+      <!-- Family members -->
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; margin-bottom:40px; position:relative;">
+
+        <div style="text-align:center; padding:0; background:rgba(255,255,255,0.6); border-radius:12px; border:1px solid #e0cfa0; overflow:hidden;">
+          <div style="aspect-ratio:9/16; overflow:hidden;">
+            <img src="Ditrih.jpg" style="width:100%; height:100%; object-fit:cover; object-position:top center; display:block; filter:sepia(20%) contrast(1.05);">
+          </div>
+          <div style="padding:20px 16px;">
+            <div style="font-family:'Playfair Display',serif; font-size:19px; font-weight:700; color:var(--dark); margin-bottom:4px;">Дитрих Лукке</div>
+            <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--terra); margin-bottom:12px;">50 лет · Кёнигсберг</div>
+            <div style="font-size:14px; color:#6a4a3a; line-height:1.6;">Издатель. Владелец типографии и издательского дома. Выпускает путеводители по Восточной Пруссии. Приехал по настоянию врача — «морской воздух и полный покой».</div>
+          </div>
+        </div>
+
+        <div style="text-align:center; padding:0; background:rgba(255,255,255,0.6); border-radius:12px; border:1px solid #e0cfa0; overflow:hidden;">
+          <div style="aspect-ratio:9/16; overflow:hidden;">
+            <img src="Anna.jpg" style="width:100%; height:100%; object-fit:cover; object-position:top center; display:block; filter:sepia(20%) contrast(1.05);">
+          </div>
+          <div style="padding:20px 16px;">
+            <div style="font-family:'Playfair Display',serif; font-size:19px; font-weight:700; color:var(--dark); margin-bottom:4px;">Анна Лукке</div>
+            <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--terra); margin-bottom:12px;">45 лет · Кёнигсберг</div>
+            <div style="font-size:14px; color:#6a4a3a; line-height:1.6;">Преподаёт фортепиано в частных домах. Акварелистка — пишет балтийские пейзажи. Каждое лето настаивает на Кранце: ей нужен свет над морем и веранда с видом на сад.</div>
+          </div>
+        </div>
+
+        <div style="text-align:center; padding:0; background:rgba(255,255,255,0.6); border-radius:12px; border:1px solid #e0cfa0; overflow:hidden;">
+          <div style="aspect-ratio:9/16; overflow:hidden;">
+            <img src="Maria.jpg" style="width:100%; height:100%; object-fit:cover; object-position:top center; display:block; filter:sepia(20%) contrast(1.05);">
+          </div>
+          <div style="padding:20px 16px;">
+            <div style="font-family:'Playfair Display',serif; font-size:19px; font-weight:700; color:var(--dark); margin-bottom:4px;">Мария</div>
+            <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--terra); margin-bottom:12px;">17 лет · Кёнигсберг</div>
+            <div style="font-size:14px; color:#6a4a3a; line-height:1.6;">Последний год в гимназии. Читает Рильке и Метерлинка, тайно пишет стихи. В Кранце её интересует вечерний Курхаус — там играет оркестр и гуляет молодёжь из Берлина.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Tea Time photo -->
+      <div style="margin-top:40px; border-radius:12px; overflow:hidden; border:1px solid #e0cfa0; position:relative;">
+        <img src="Tea Time.jpg" style="width:100%; display:block; object-fit:cover; filter:sepia(15%) contrast(1.05) brightness(0.97);">
+        <div style="position:absolute; bottom:0; left:0; right:0; padding:16px 24px; background:linear-gradient(transparent, rgba(30,18,8,0.75));">
+          <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:15px; color:#f5e8d0; letter-spacing:0.5px;">Летнее чаепитие на веранде. Кранц, лето 1903.</div>
+        </div>
+      </div>
+
+      <!-- Their route -->
+      <div style="position:relative; padding-left:28px; border-left:2px solid #e0cfa0;">
+        <div style="font-family:'Playfair Display',serif; font-size:18px; color:var(--dark); margin-bottom:20px; font-style:italic;">Их маршрут — наш маршрут:</div>
+
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <div style="display:flex; gap:16px; align-items:start;">
+            <div style="width:32px; height:32px; background:var(--terra); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:14px; flex-shrink:0; margin-left:-44px;">🚂</div>
+            <div>
+              <div style="font-weight:700; font-size:15px; color:var(--dark);">Поезд Кёнигсберг → Кранц</div>
+              <div style="font-size:14px; color:#7a5a4a; line-height:1.5;">Железная дорога открыта в 1885 году. 32 минуты пути. Та же электричка, которую берём мы — только 123 года спустя.</div>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:16px; align-items:start;">
+            <div style="width:32px; height:32px; background:var(--amber); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:14px; flex-shrink:0; margin-left:-44px;">🏠</div>
+            <div>
+              <div style="font-weight:700; font-size:15px; color:var(--dark);">Вилла «Густав-Адольф»</div>
+              <div style="font-size:14px; color:#7a5a4a; line-height:1.5;">Снимают на две недели. Дитрих читает на веранде. Анна рисует акварелью утренний туман. Мария пишет письма подругам в Кёнигсберг.</div>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:16px; align-items:start;">
+            <div style="width:32px; height:32px; background:var(--teal); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:14px; flex-shrink:0; margin-left:-44px;">🌊</div>
+            <div>
+              <div style="font-weight:700; font-size:15px; color:var(--dark);">Набережная и купальни</div>
+              <div style="font-size:14px; color:#7a5a4a; line-height:1.5;">Дамские и мужские купальни — раздельно, как требует приличие. Прогулка по Strandpromenade — той самой, по которой мы пройдём в мае.</div>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:16px; align-items:start;">
+            <div style="width:32px; height:32px; background:#8B6A4A; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:14px; flex-shrink:0; margin-left:-44px;">🎵</div>
+            <div>
+              <div style="font-weight:700; font-size:15px; color:var(--dark);">Вечер в Курхаусе</div>
+              <div style="font-size:14px; color:#7a5a4a; line-height:1.5;">Живой оркестр, танцы, курортная публика. Сейчас это ресторан БАЛТ — наш ужин в первый вечер. Тот же зал, те же своды.</div>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:16px; align-items:start;">
+            <div style="width:32px; height:32px; background:#5a7a5a; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:14px; flex-shrink:0; margin-left:-44px;">🌲</div>
+            <div>
+              <div style="font-weight:700; font-size:15px; color:var(--dark);">Поездка на Куршскую косу</div>
+              <div style="font-size:14px; color:#7a5a4a; line-height:1.5;">Тогда — на пролётке или пароходе. Сейчас — 45 минут на машине. Дюны, сосны и горизонт не изменились.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer quote -->
+      <div style="text-align:center; margin-top:40px; padding-top:32px; border-top:1px dashed #e0cfa0;">
+        <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:18px; color:#7a5a4a; line-height:1.7;">«Кранц даёт то, чего не найти в городе —<br>тишину, море и ощущение что время замедлилось.»</div>
+        <div style="font-size:12px; color:#b0a080; margin-top:8px; letter-spacing:2px;">— Дитрих Лукке, из письма другу. Июль 1903.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="art-divider">
+  <div class="art-divider-line"></div>
+  <div class="art-divider-dot"></div>
+  <svg viewBox="0 0 60 30"><use href="#ornament-flower" color="#C4673A"/></svg>
+  <div class="art-divider-dot"></div>
+  <div class="art-divider-line"></div>
+</div>
+
+<!-- PAST TRIPS SLIDER -->
+<div style="padding: 80px 0; background: var(--dark); overflow: hidden;">
+  <div style="max-width:960px; margin:0 auto; padding: 0 20px;">
+    <div class="section-label" style="color: var(--amber); margin-bottom:12px;">Наши путешествия</div>
+    <h2 style="font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,40px); color:#fff; margin-bottom:32px; line-height:1.2;">Города, которые мы уже любим</h2>
+  </div>
+
+  <div class="slider-wrapper">
+    <div class="slider-track" id="sliderTrack">
+      <div class="slide">
+        <img src="Moscow.jpeg" alt="Москва">
+        <div class="slide-label">Москва</div>
+      </div>
+      <div class="slide">
+        <img src="Saint Pererburg.jpeg" alt="Санкт-Петербург">
+        <div class="slide-label">Санкт-Петербург</div>
+      </div>
+      <div class="slide">
+        <img src="Viborg .jpeg" alt="Выборг">
+        <div class="slide-label">Выборг</div>
+      </div>
+      <div class="slide">
+        <img src="Nizhniy Novgorod.jpeg" alt="Нижний Новгород">
+        <div class="slide-label">Нижний Новгород</div>
+      </div>
+      <div class="slide">
+        <img src="Kolomna.jpeg" alt="Коломна">
+        <div class="slide-label">Коломна</div>
+      </div>
+      <div class="slide">
+        <img src="Sochi.jpeg" alt="Сочи">
+        <div class="slide-label">Сочи</div>
+      </div>
+    </div>
+
+    <button class="slider-btn slider-btn-prev" onclick="slideMove(-1)">&#8592;</button>
+    <button class="slider-btn slider-btn-next" onclick="slideMove(1)">&#8594;</button>
+  </div>
+
+  <div class="slider-dots" id="sliderDots"></div>
+</div>
+
+<style>
+  .slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding: 0 20px;
+  }
+
+  .slider-track {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+    cursor: grab;
+  }
+
+  .slider-track:active { cursor: grabbing; }
+
+  .slide {
+    flex-shrink: 0;
+    width: 340px;
+    height: 440px;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .slide:hover img { transform: scale(1.04); }
+
+  .slide-label {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 48px 24px 24px;
+    background: linear-gradient(to top, rgba(44,24,16,0.85) 0%, transparent 100%);
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .slide-label::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 2px;
+    background: var(--amber);
+    margin-bottom: 8px;
+  }
+
+  .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(44,24,16,0.7);
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 10;
+    backdrop-filter: blur(8px);
+    transition: background 0.2s;
+  }
+
+  .slider-btn:hover { background: var(--terra); border-color: var(--terra); }
+  .slider-btn-prev { left: 28px; }
+  .slider-btn-next { right: 28px; }
+
+  .slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  .slider-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .slider-dot.active {
+    background: var(--amber);
+    transform: scale(1.3);
+  }
+
+  @media (max-width: 640px) {
+    .slide { width: 280px; height: 360px; }
+    .slider-btn { display: none; }
+  }
+</style>
+
+<script>
+  (function() {
+    const track = document.getElementById('sliderTrack');
+    const dotsContainer = document.getElementById('sliderDots');
+    const slides = track.querySelectorAll('.slide');
+    const slideWidth = () => slides[0].offsetWidth + 16;
+    let current = 0;
+
+    // Create dots
+    slides.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+      dot.onclick = () => goTo(i);
+      dotsContainer.appendChild(dot);
+    });
+
+    function goTo(index) {
+      current = Math.max(0, Math.min(index, slides.length - 1));
+      track.style.transform = `translateX(-${current * slideWidth()}px)`;
+      dotsContainer.querySelectorAll('.slider-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+      });
+    }
+
+    window.slideMove = function(dir) { goTo(current + dir); };
+
+    // Drag / swipe
+    let startX = 0, isDragging = false;
+    track.addEventListener('mousedown', e => { startX = e.clientX; isDragging = true; });
+    track.addEventListener('mousemove', e => { if (!isDragging) return; });
+    track.addEventListener('mouseup', e => {
+      if (!isDragging) return;
+      isDragging = false;
+      const diff = startX - e.clientX;
+      if (Math.abs(diff) > 50) goTo(current + (diff > 0 ? 1 : -1));
+    });
+    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive:true});
+    track.addEventListener('touchend', e => {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) goTo(current + (diff > 0 ? 1 : -1));
+    }, {passive:true});
+  })();
+</script>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <!-- Art Nouveau border top -->
+  <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:40px; color:rgba(255,255,255,0.25);">
+    <div style="flex:1; height:1px; background:linear-gradient(to right, transparent, rgba(232,160,74,0.4), transparent);"></div>
+    <svg width="120" height="24" viewBox="0 0 120 24" fill="none" stroke="rgba(232,160,74,0.5)" stroke-width="1">
+      <path d="M0,12 Q15,12 30,12 Q45,12 60,12 Q75,12 90,12 Q105,12 120,12"/>
+      <path d="M20,12 Q22,6 28,8 Q26,12 20,12"/>
+      <path d="M40,12 Q42,5 49,7 Q46,12 40,12"/>
+      <path d="M60,12 m-4,0 Q58,5 64,7 Q62,12 56,12"/>
+      <path d="M75,12 Q77,18 83,16 Q81,12 75,12"/>
+      <path d="M95,12 Q97,19 104,17 Q101,12 95,12"/>
+      <circle cx="60" cy="12" r="3" fill="rgba(232,160,74,0.4)"/>
+      <circle cx="20" cy="12" r="1.5" fill="rgba(232,160,74,0.3)"/>
+      <circle cx="100" cy="12" r="1.5" fill="rgba(232,160,74,0.3)"/>
+    </svg>
+    <div style="flex:1; height:1px; background:linear-gradient(to right, transparent, rgba(232,160,74,0.4), transparent);"></div>
+  </div>
+  <span class="footer-cats">🐱 🐈 🐾 🐈 🐱</span>
+  <h2>До встречи, Зеленоградск!</h2>
+  <p>17–23 мая 2026 • Дмитрий, Анна и Маша</p>
+</footer>
+
+<div class="scroll-cat" onclick="window.scrollTo({top:0,behavior:'smooth'})">🐱</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.day-card, .cafe-card').forEach(el => {
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
